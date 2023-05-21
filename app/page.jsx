@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <Sidebar page="home"/>
       <Header page="Home"/>
-      <div>HomePage</div>
+      <div className="home">Welcome to the Clerkie Challenge!</div>
     </>
   )
 }
