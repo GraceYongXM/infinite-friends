@@ -5,7 +5,7 @@ import React from "react";
 const FriendPage = () => {
   return (
     <>
-      <Sidebar page="Friends"/>
+      <Sidebar page="friends"/>
       <Header page="Friends"/>
       <div>FriendPage</div>
     </>

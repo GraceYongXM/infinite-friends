@@ -4,7 +4,7 @@ import Sidebar from "@component/components/Sidebar";
 const Home = () => {
   return (
     <>
-      <Sidebar page="Home"/>
+      <Sidebar page="home"/>
       <Header page="Home"/>
       <div>HomePage</div>
     </>

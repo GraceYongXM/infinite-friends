@@ -1,11 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const SidebarTab = ({ icon, text }) => {
+const SidebarTab = ({ icon, link, text, selected }) => {
+  const className = selected ? (
+    "sidebar-tab selected"
+  ) : (
+    "sidebar-tab"
+  );
+
   return (
     // how to use 2 css classes tgt
-    <div className="sidebar-tab">
+    <div className={className}>
       <Image className="sidebar-tab-icon" src={icon}></Image>
-      <div className="sidebar-text sidebar-tab-text">{text}</div>
+      <Link className="sidebar-text sidebar-tab-text" href={link}>{text}</Link>
     </div>
   );
 };

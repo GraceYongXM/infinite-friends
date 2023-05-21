@@ -1,3 +1,5 @@
+"use client"
+
 import "../app/globals.css";
 
 import Logo from "../assets/logo.svg";
@@ -5,8 +7,22 @@ import FriendsIcon from "../assets/friends.svg";
 import HomeIcon from "../assets/home.svg";
 import SidebarTab from "./SidebarTab";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Sidebar = ({ page }) => {
+  const [isHome, setIsHome] = useState(false);
+  const [isFriends, setIsFriends] =  useState(false);
+
+  useEffect(() => {
+    if (page == "home") {
+      setIsHome(true);
+      console.log("home");
+    } else if (page == "friends") {
+      console.log("friends");
+      setIsFriends(true);
+    }
+  })
+
   return (
     <aside className="sidebar">
       <nav>
@@ -17,8 +33,8 @@ const Sidebar = ({ page }) => {
           </div>
         </div>
 
-        <SidebarTab icon={HomeIcon} text="Home" />
-        <SidebarTab icon={FriendsIcon} text="Friends" />
+        <SidebarTab icon={HomeIcon} link="" text="Home" selected={isHome}/>
+        <SidebarTab icon={FriendsIcon} link="friends" text="Friends" selected={isFriends}/>
       </nav>
     </aside>
   );

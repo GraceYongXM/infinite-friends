@@ -133,6 +133,8 @@ body {
 .sidebar-text {
   font-size: 16px;
   position: relative;
+  color: white;
+  text-decoration: none;
 }
 
 .sidebar-title {
@@ -161,6 +163,10 @@ margin-right: 7px;
   align-items: center;
   padding: 8px 10px;
   border-radius: 6px;
+}
+
+.selected {
+    background: #424242;
 }
 
 .children {
