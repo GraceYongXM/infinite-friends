@@ -151,7 +151,7 @@ body {
 }
 
 .sidebar-tab-icon {
-margin-right: 7px;
+  margin-right: 7px;
 }
 
 .sidebar-tab {
@@ -166,7 +166,7 @@ margin-right: 7px;
 }
 
 .selected {
-    background: #424242;
+  background: #424242;
 }
 
 .children {
@@ -196,4 +196,24 @@ margin-right: 7px;
   font-weight: 600;
   font-size: 26px;
   height: 100vh;
+}
+
+.friends {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding-top: 126px;
+}
+
+/* filter */
+.filter-button {
+  border: 1px solid #ababab;
+  border-radius: 30px;
+  width: 59px;
+  height: 37px;
+  background-color: white;
+}
+
+.filter-icon {
+
 }
