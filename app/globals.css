@@ -148,10 +148,14 @@ body {
 /* sidebar icons */
 .sidebar-title-icon {
   margin-right: 11px;
+  width: 20px;
+  height: 20.01px;
 }
 
 .sidebar-tab-icon {
   margin-right: 7px;
+  height: 24px;
+  width: 24px;
 }
 
 .sidebar-tab {
@@ -200,12 +204,18 @@ body {
 
 .friends {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   height: 100vh;
   padding-top: 126px;
+  margin-left: 310px;
 }
 
 /* filter */
+.filter-rect{
+  display: flex;
+  align-items: center;
+  margin-left: 1px;
+}
 .filter-button {
   border: 1px solid #ababab;
   border-radius: 30px;
@@ -215,5 +225,19 @@ body {
 }
 
 .filter-icon {
+  width: 19px;
+  height: 20px;
+}
 
+.filter-clear {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  color: #d7d7d7;
+  margin-left: 15px;
+  padding-left: 15px;
+  border-left: 1px solid #D7D7D7;
+  height: 28px;
+  display: flex;
+  align-items: center;
 }

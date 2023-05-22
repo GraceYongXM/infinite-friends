@@ -2,9 +2,9 @@
 
 import "../app/globals.css";
 
-import Logo from "../assets/logo.svg";
-import FriendsIcon from "../assets/friends.svg";
-import HomeIcon from "../assets/home.svg";
+import LogoPng from "../assets/logo-png.png";
+import FriendsIconPng from "../assets/friends-png.png";
+import HomeIconPng from "../assets/home-png.png";
 import SidebarTab from "./SidebarTab";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -28,13 +28,13 @@ const Sidebar = ({ page }) => {
       <nav>
         <div className="sidebar-header">
           <div className="sidebar-tab">
-            <Image className="sidebar-title-icon" src={Logo}></Image>
+            <Image className="sidebar-title-icon" src={LogoPng}></Image>
             <div className="sidebar-text sidebar-title">Clerkie Challenge</div>
           </div>
         </div>
 
-        <SidebarTab icon={HomeIcon} link="" text="Home" selected={isHome}/>
-        <SidebarTab icon={FriendsIcon} link="friends" text="Friends" selected={isFriends}/>
+        <SidebarTab icon={HomeIconPng} link="" text="Home" selected={isHome}/>
+        <SidebarTab icon={FriendsIconPng} link="friends" text="Friends" selected={isFriends}/>
       </nav>
     </aside>
   );
