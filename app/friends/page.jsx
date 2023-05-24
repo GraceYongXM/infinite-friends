@@ -7,12 +7,14 @@ import Image from "next/image";
 import Header from "@component/components/Header";
 import Sidebar from "@component/components/Sidebar";
 import FilterIcon from "../../assets/filter.png";
-
-// import FriendsData from "../../public/friendsData.jon";
+import FriendTile from "@component/components/Friends/FriendTile";
+import FriendFilter from "@component/components/Filter/FriendFilter";
+import ClearAllButton from "@component/components/Filter/ClearAllButton";
 
 const FriendPage = () => {
   const [friends, setFriends] = useState(null);
   const [isLoading, setLoading] = useState(false);
+  const [showFilterModal, setShowFilterModel] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -49,15 +51,16 @@ const FriendPage = () => {
               />
             </button>
 
-            <div className="filter-clear">Clear all</div>
+            {showFilterModal && <FriendFilter />}
+
+            <button className="filter-clear-border">Clear All</button>
+            {/* <div className="filter-line"></div> */}
           </div>
 
           <div className="friends-list">
-            <div>
-              {friends.map((friend) => (
-                <div>{friend.name}</div>
-              ))}
-            </div>
+            {friends.map((friend) => (
+              <FriendTile friend={friend} />
+            ))}
           </div>
         </div>
       </>

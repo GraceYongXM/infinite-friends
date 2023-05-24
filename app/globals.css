@@ -229,17 +229,19 @@ body {
   height: 20px;
 }
 
-.filter-clear {
+.filter-clear-border {
   font-weight: 600;
   font-size: 14px;
   line-height: 16.94px;
   color: #d7d7d7;
   margin-left: 15px;
   padding-left: 15px;
-  border-left: 1px solid #d7d7d7;
   height: 28px;
   display: flex;
   align-items: center;
+  background-color: white;
+  border: none;
+  border-left: 1px solid #d7d7d7;
 }
 
 /* friends display */
@@ -327,4 +329,133 @@ body {
   width: 320px;
   height: 286px;
   background-color: white;
+  box-shadow: 0px 0px 10px 0px #0000001a;
+  border-radius: 6px;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  border-radius: 2px;
+  height: 59px;
+  margin-left: 1px;
+  margin-right: 1px;
+  padding-left: 24px;
+  padding-right: 19px;
+}
+
+.filter-modal-clear {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16.94px;
+  color: #d7d7d7;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: none;
+  padding: 0px;
+  white-space: nowrap;
+}
+
+.filter-word {
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 60px;
+  margin-right: 103px;
+}
+
+.close-button {
+  background-color: white;
+  border: none;
+}
+
+.filter-status {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #686868;
+  margin-left: 25px;
+  margin-top: 26px;
+}
+
+.filter-option {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px;
+  margin-bottom: 0px;
+}
+
+.filter-option-text {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #424242;
+}
+
+/* custom checkbox */
+.custom-checkbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0px;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  display: block;
+  height: 16px;
+  width: 16px;
+  border: 1.5px solid #ababab;
+  border-radius: 1px;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background: #3399ff;
+  height: 19px;
+  width: 19px;
+  border: 0px;
+  border-radius: 1px;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-checkbox .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.apply-filter {
+  width: 300px;
+  height: 45px;
+  background: #424242;
+  border: none;
+  border-radius: 6px;
+  margin: 35px 10px 16px 10px;
+}
+
+.apply {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: white;
 }
