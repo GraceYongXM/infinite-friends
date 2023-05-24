@@ -1,0 +1,47 @@
+{
+    "friends": [
+      {
+        "name": "Sally Cooper",
+        "email": "sallycooper@gmail.com",
+        "phone": "(470) 782-5471",
+        "closeness": 1
+      },
+      {
+        "name": "Betty Wood",
+        "email": "betty@gmail.com",
+        "phone": "(273) 098-1029",
+        "closeness": 2
+      },
+      {
+        "name": "Debra Russell",
+        "email": "debraressell@gmail.com",
+        "phone": "(412) 235-5321",
+        "closeness": 2
+      },
+      {
+        "name": "Rebecca Flores",
+        "email": "rebeccaflores@gmail.com",
+        "phone": "(574) 243-2574",
+        "closeness": 1
+      },
+      {
+        "name": "Luna Silverstone",
+        "email": "lunasilverston@gmail.com",
+        "phone": "(587) 321-8496",
+        "closeness": 2
+      },
+      {
+        "name": "Phoenix Blackwood",
+        "email": "phoenixblackwood@gmail.com",
+        "phone": "(902) 764-5132",
+        "closeness": 1
+      },
+      {
+        "name": "Violet Meadows",
+        "email": "violetmeadows@gmail.com",
+        "phone": "(415) 689-2078",
+        "closeness": 1
+      }
+    ]
+  }
+  

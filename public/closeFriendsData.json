@@ -1,0 +1,29 @@
+{
+    "friends": [
+      {
+        "name": "Sally Cooper",
+        "email": "sallycooper@gmail.com",
+        "phone": "(470) 782-5471",
+        "closeness": 1
+      },
+      {
+        "name": "Rebecca Flores",
+        "email": "rebeccaflores@gmail.com",
+        "phone": "(574) 243-2574",
+        "closeness": 1
+      },
+      {
+        "name": "Phoenix Blackwood",
+        "email": "phoenixblackwood@gmail.com",
+        "phone": "(902) 764-5132",
+        "closeness": 1
+      },
+      {
+        "name": "Violet Meadows",
+        "email": "violetmeadows@gmail.com",
+        "phone": "(415) 689-2078",
+        "closeness": 1
+      }
+    ]
+  }
+  
