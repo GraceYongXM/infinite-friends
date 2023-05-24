@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 
-const FilterOption = ({ option }) => {
+const FilterOption = ({ option, onChange }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked);
+    const { checked } = event.target;
+    setIsChecked(checked);
+    onChange(option, checked);
   };
 
   return (

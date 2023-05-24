@@ -216,12 +216,17 @@ body {
   align-items: center;
   margin-left: 1px;
 }
+
 .filter-button {
   border: 1px solid #ababab;
   border-radius: 30px;
   width: 59px;
   height: 37px;
   background-color: white;
+}
+
+.filter-button.selected {
+  background: #424242;
 }
 
 .filter-icon {
@@ -356,6 +361,10 @@ body {
   border: none;
   padding: 0px;
   white-space: nowrap;
+}
+
+.filter-modal-clear.checked {
+  color: #3399ff;
 }
 
 .filter-word {

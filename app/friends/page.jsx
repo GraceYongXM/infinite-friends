@@ -7,6 +7,7 @@ import Image from "next/image";
 import Header from "@component/components/Header";
 import Sidebar from "@component/components/Sidebar";
 import FilterIcon from "../../assets/filter.png";
+import FilterSelectedIcon from "../../assets/filter-selected.png";
 import FriendTile from "@component/components/Friends/FriendTile";
 import FriendFilter from "@component/components/Filter/FriendFilter";
 import ClearAllButton from "@component/components/Filter/ClearAllButton";
@@ -14,7 +15,15 @@ import ClearAllButton from "@component/components/Filter/ClearAllButton";
 const FriendPage = () => {
   const [friends, setFriends] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  const [showFilterModal, setShowFilterModel] = useState(true);
+  const [isButtonClicked, setButtonClicked] = useState(false);
+
+  const handleButtonClick = () => {
+    setButtonClicked(!isButtonClicked);
+  };
+
+  const handleCloseModal = () => {
+    setButtonClicked(!isButtonClicked);
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -43,18 +52,17 @@ const FriendPage = () => {
         <Header page="Friends" />
         <div className="friends">
           <div className="filter-rect">
-            <button className="filter-button">
+            <button className={`filter-button ${isButtonClicked ? 'selected' : ''}`} onClick={handleButtonClick}>
               <Image
                 className="filter-icon"
-                src={FilterIcon}
-                alt="Filter Icon"
+                src={isButtonClicked ? FilterSelectedIcon : FilterIcon}
+                alt={isButtonClicked ? "Selected Filter Icon" : "Filter Icon"}
               />
             </button>
 
-            {showFilterModal && <FriendFilter />}
+            {isButtonClicked && <FriendFilter onClose={handleCloseModal} />}
 
-            <button className="filter-clear-border">Clear All</button>
-            {/* <div className="filter-line"></div> */}
+            <button className="filter-clear-border">Clear all</button>
           </div>
 
           <div className="friends-list">
