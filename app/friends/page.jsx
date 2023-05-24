@@ -10,12 +10,81 @@ import FilterIcon from "../../assets/filter.png";
 import FilterSelectedIcon from "../../assets/filter-selected.png";
 import FriendTile from "@component/components/Friends/FriendTile";
 import FriendFilter from "@component/components/Filter/FriendFilter";
-import ClearAllButton from "@component/components/Filter/ClearAllButton";
 
 const FriendPage = () => {
-  const [friends, setFriends] = useState(null);
+  const [friends, setFriends] = useState([]);
+  const [checkedOptions, setCheckedOptions] = useState([]);
+  const [isFiltered, setIsFiltered] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isButtonClicked, setButtonClicked] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchFriends();
+  }, []);
+
+  useEffect(() => {
+    if (checkedOptions.length > 0) {
+      setIsFiltered(true);
+    } else {
+      setIsFiltered(false);
+    }
+  }, checkedOptions);
+
+  const fetchCloseFriends = async () => {
+    try {
+      const response = await fetch("/closeFriendsData.json");
+      console.log("response", response);
+      const data = await response.json();
+      setFriends(data.friends);
+      setIsFiltered(true);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching close friends data:", error);
+    }
+  };
+
+  const fetchSuperCloseFriends = async () => {
+    try {
+      const response = await fetch("/superCloseFriendsData.json");
+      console.log("response", response);
+      const data = await response.json();
+      setFriends(data.friends);
+      setIsFiltered(true);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching super close friends data:", error);
+    }
+  };
+
+  const fetchCloseAndSuperCloseFriends = async () => {
+    try {
+      const response = await fetch("/closeAndSuperCloseFriendsData.json");
+      console.log("response", response);
+      const data = await response.json();
+      setFriends(data.friends);
+      setIsFiltered(true);
+      setLoading(false);
+    } catch (error) {
+      console.error(
+        "Error fetching close and super close friends data:",
+        error
+      );
+    }
+  };
+
+  const fetchFriends = async () => {
+    try {
+      const response = await fetch("/friendsData.json");
+      console.log("response", response);
+      const data = await response.json();
+      setFriends(data.friends);
+      setIsFiltered(false);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching friends data:", error);
+    }
+  };
 
   const handleButtonClick = () => {
     setButtonClicked(!isButtonClicked);
@@ -23,25 +92,32 @@ const FriendPage = () => {
 
   const handleCloseModal = () => {
     setButtonClicked(!isButtonClicked);
-  }
+  };
 
-  useEffect(() => {
-    setLoading(true);
-
-    const fetchFriends = async () => {
-      try {
-        const response = await fetch("/friendsData.json");
-        console.log("response", response);
-        const data = await response.json();
-        setFriends(data.friends);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+  const handleApplyFilter = (selectedOptions) => {
+    setCheckedOptions(selectedOptions);
+    if (
+      selectedOptions.includes("Close Friends") &&
+      selectedOptions.includes("Super Close Friends")
+    ) {
+      fetchCloseAndSuperCloseFriends();
+    } else if (selectedOptions.length == 0) {
+      fetchFriends();
+    } else {
+      if (selectedOptions.includes("Close Friends")) {
+        fetchCloseFriends();
       }
-    };
+      if (selectedOptions.includes("Super Close Friends")) {
+        fetchSuperCloseFriends();
+      }
+    }
 
-    fetchFriends();
-  }, []);
+    // setCheckedOptions(selectedOptions);
+    // const filteredData = FriendsData.filter((friend) =>
+    //   selectedOptions.some((option) => friend.name.includes(option.label))
+    // );
+    // setFilteredFriends(filteredData);
+  };
 
   if (isLoading) return <p>Loading...</p>;
   if (!friends) return <p>No profile data</p>;
@@ -52,17 +128,41 @@ const FriendPage = () => {
         <Header page="Friends" />
         <div className="friends">
           <div className="filter-rect">
-            <button className={`filter-button ${isButtonClicked ? 'selected' : ''}`} onClick={handleButtonClick}>
+            <button
+              className={`filter-button ${isButtonClicked ? "selected" : ""} ${
+                isFiltered ? "filtered" : ""
+              }`}
+              onClick={handleButtonClick}
+            >
               <Image
-                className="filter-icon"
-                src={isButtonClicked ? FilterSelectedIcon : FilterIcon}
-                alt={isButtonClicked ? "Selected Filter Icon" : "Filter Icon"}
+                className={`filter-icon ${isFiltered ? "filtered" : ""}`}
+                src={
+                  isButtonClicked || isFiltered
+                    ? FilterSelectedIcon
+                    : FilterIcon
+                }
+                alt={
+                  isButtonClicked || isFiltered
+                    ? "Selected Filter Icon"
+                    : "Filter Icon"
+                }
               />
+              <div className="apply">{isFiltered && checkedOptions.length}</div>
             </button>
 
-            {isButtonClicked && <FriendFilter onClose={handleCloseModal} />}
+            {isButtonClicked && (
+              <FriendFilter
+                onClose={handleCloseModal}
+                onApply={handleApplyFilter}
+              />
+            )}
 
-            <button className="filter-clear-border">Clear all</button>
+            <button
+              className={`filter-clear-border ${isFiltered ? "checked" : ""}`}
+              onClick={fetchFriends}
+            >
+              Clear all
+            </button>
           </div>
 
           <div className="friends-list">

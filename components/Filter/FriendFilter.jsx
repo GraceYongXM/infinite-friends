@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 
@@ -7,7 +7,7 @@ import Image from "next/image";
 import XIcon from "../../assets/x.png";
 import FilterOption from "./FilterOption";
 
-const FriendFilter = ({ onClose }) => {
+const FriendFilter = ({ onClose, onApply }) => {
   const [checkedOptions, setCheckedOptions] = useState([]);
 
   const handleOptionsChange = (option, isChecked) => {
@@ -22,12 +22,29 @@ const FriendFilter = ({ onClose }) => {
 
   const handleClose = () => {
     onClose();
+  };
+
+  const handleApply = () => {
+    onApply(checkedOptions);
+    onClose();
+  };
+
+  const handleClearAll = () => {
+    onApply([]);
+    onClose();
   }
 
   return (
     <div className="filter-modal">
       <div className="filter-header">
-        <button className={`filter-modal-clear ${checkedOptions.length > 0 ? 'checked' : ''}`}>Clear all</button>
+        <button
+          className={`filter-modal-clear ${
+            checkedOptions.length > 0 ? "checked" : ""
+          }`}
+          onClick={handleClearAll}
+        >
+          Clear all
+        </button>
         <div className="filter-word">Filter</div>
         <button className="close-button" onClick={handleClose}>
           <Image src={XIcon} alt="X" width={11} height={11} />
@@ -36,9 +53,12 @@ const FriendFilter = ({ onClose }) => {
       <div className="filter-body">
         <div className="filter-status">Friend Status</div>
         <FilterOption option="Close Friends" onChange={handleOptionsChange} />
-        <FilterOption option="Super Close Friends" onChange={handleOptionsChange} />
+        <FilterOption
+          option="Super Close Friends"
+          onChange={handleOptionsChange}
+        />
 
-        <button className="apply-filter">
+        <button className="apply-filter" onClick={handleApply}>
           <div className="apply">Apply</div>
         </button>
       </div>
