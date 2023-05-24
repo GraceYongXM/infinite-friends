@@ -10,6 +10,7 @@ import FilterIcon from "../../assets/filter.png";
 import FilterSelectedIcon from "../../assets/filter-selected.png";
 import FriendTile from "@component/components/Friends/FriendTile";
 import FriendFilter from "@component/components/Filter/FriendFilter";
+import Loading from "@component/components/Loading";
 
 const FriendPage = () => {
   const [friends, setFriends] = useState([]);
@@ -75,6 +76,8 @@ const FriendPage = () => {
 
   const fetchFriends = async () => {
     try {
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const response = await fetch("/friendsData.json");
       console.log("response", response);
       const data = await response.json();
@@ -119,8 +122,8 @@ const FriendPage = () => {
     // setFilteredFriends(filteredData);
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!friends) return <p>No profile data</p>;
+  //   if (isLoading) return <p>Loading...</p>;
+  //   if (!friends) return <p>No profile data</p>;
   if (friends) {
     return (
       <>
@@ -165,11 +168,20 @@ const FriendPage = () => {
             </button>
           </div>
 
-          <div className="friends-list">
-            {friends.map((friend) => (
-              <FriendTile friend={friend} />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="friends-list">
+              {[...Array(10).keys()].map((i) => (
+                <Loading key={i} />
+              ))}
+            </div>
+          ) : (
+            // <div className="friends-list">
+            //   {friends.map((friend) => (
+            //     <FriendTile key={friend.name} friend={friend} />
+            //   ))}
+            // </div>
+            <Loading />
+          )}
         </div>
       </>
     );
