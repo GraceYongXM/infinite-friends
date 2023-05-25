@@ -124,16 +124,8 @@ const FriendPage = () => {
         fetchSuperCloseFriends();
       }
     }
-
-    // setCheckedOptions(selectedOptions);
-    // const filteredData = FriendsData.filter((friend) =>
-    //   selectedOptions.some((option) => friend.name.includes(option.label))
-    // );
-    // setFilteredFriends(filteredData);
   };
 
-  //   if (isLoading) return <p>Loading...</p>;
-  //   if (!friends) return <p>No profile data</p>;
   if (friends) {
     return (
       <>

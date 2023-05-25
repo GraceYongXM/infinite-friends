@@ -193,9 +193,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 445px;
   font-weight: 600;
   font-size: 26px;
-  height: calc(100vh - 80px);
 }
 
 .friends {
@@ -485,31 +485,16 @@ body {
   color: white;
 }
 
-/* loading */
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.loader {
-  width: 100px;
-  height: 20px;
-  background: linear-gradient(to right, #ddd, #f2f2f2, #ddd);
-  border-radius: 10px;
-  animation: fade 2s infinite;
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .loaders {
   display: flex;
   flex-direction: column;
   margin-right: 31px;
+  animation: fadeOut 1.5s;
 }
 
 .loaders-group {
