@@ -124,6 +124,11 @@ const FriendPage = () => {
     }
   };
 
+  const handleClearAll = () => {
+    fetchFriends();
+    setCheckedOptions([]);
+  }
+
   if (friends) {
     return (
       <>
@@ -161,7 +166,7 @@ const FriendPage = () => {
 
             <button
               className={`filter-clear-border ${isFiltered ? "checked" : ""}`}
-              onClick={fetchFriends}
+              onClick={handleClearAll}
             >
               Clear all
             </button>
