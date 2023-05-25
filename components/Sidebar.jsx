@@ -1,13 +1,14 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import "../app/globals.css";
+
+import Image from "next/image";
 
 import LogoPng from "../assets/logo-png.png";
 import FriendsIconPng from "../assets/friends-png.png";
 import HomeIconPng from "../assets/home-png.png";
 import SidebarTab from "./SidebarTab";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const Sidebar = ({ page }) => {
   const [isHome, setIsHome] = useState(false);

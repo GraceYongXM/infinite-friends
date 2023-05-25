@@ -155,6 +155,7 @@ const FriendPage = () => {
               <FriendFilter
                 onClose={handleCloseModal}
                 onApply={handleApplyFilter}
+                checkedFriendOptions={checkedOptions}
               />
             )}
 

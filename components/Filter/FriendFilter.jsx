@@ -7,18 +7,8 @@ import Image from "next/image";
 import XIcon from "../../assets/x.png";
 import FilterOption from "./FilterOption";
 
-const FriendFilter = ({ onClose, onApply }) => {
-  const [checkedOptions, setCheckedOptions] = useState([]);
-
-  const handleOptionsChange = (option, isChecked) => {
-    if (isChecked) {
-      setCheckedOptions((prevOptions) => [...prevOptions, option]);
-    } else {
-      setCheckedOptions((prevOptions) =>
-        prevOptions.filter((prevOption) => prevOption !== option)
-      );
-    }
-  };
+const FriendFilter = ({ onClose, onApply, checkedFriendOptions }) => {
+  const [checkedOptions, setCheckedOptions] = useState(checkedFriendOptions);
 
   const handleClose = () => {
     onClose();
@@ -30,9 +20,8 @@ const FriendFilter = ({ onClose, onApply }) => {
   };
 
   const handleClearAll = () => {
-    onApply([]);
-    onClose();
-  }
+    setCheckedOptions([]);
+  };
 
   return (
     <div className="filter-modal">
@@ -52,10 +41,15 @@ const FriendFilter = ({ onClose, onApply }) => {
       </div>
       <div className="filter-body">
         <div className="filter-status">Friend Status</div>
-        <FilterOption option="Close Friends" onChange={handleOptionsChange} />
+        <FilterOption
+          option="Close Friends"
+          checkedOptions={checkedOptions}
+          setCheckedOptions={setCheckedOptions}
+        />
         <FilterOption
           option="Super Close Friends"
-          onChange={handleOptionsChange}
+          checkedOptions={checkedOptions}
+          setCheckedOptions={setCheckedOptions}
         />
 
         <button className="apply-filter" onClick={handleApply}>

@@ -1,6 +1,8 @@
 import React from "react";
-import FriendCloseness from "./FriendCloseness";
+
 import Link from "next/link";
+
+import FriendCloseness from "./FriendCloseness";
 
 const FriendTile = ({ friend }) => {
   return (
