@@ -116,11 +116,11 @@ body {
 /* sidebar  */
 .sidebar {
   width: 250px;
-  height: 100vh;
   background-color: #091928;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
   color: white;
 }
 
@@ -174,23 +174,20 @@ body {
 }
 
 .children {
-  /* background: purple; */
   margin-left: 250px;
 }
 
 .header {
   display: flex;
   align-items: center;
+  position: absolute;
+  width: calc(100% - 250px - 40px);
   padding-left: 40px;
   height: 80px;
   box-shadow: 0px 4px 4px rgba(161, 161, 161, 0.1);
   font-weight: 700;
   font-size: 18px;
   color: black;
-
-  /* ensure display below is centered */
-  position: absolute;
-  width: 100%;
 }
 
 .home {
@@ -206,7 +203,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding-top: 126px;
+  padding-top: calc(46px + 80px);
   margin-left: 310px;
 }
 

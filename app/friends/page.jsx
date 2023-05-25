@@ -34,8 +34,11 @@ const FriendPage = () => {
 
   const fetchCloseFriends = async () => {
     try {
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const response = await fetch("/closeFriendsData.json");
-      console.log("response", response);
+      // console.log("response", response);
       const data = await response.json();
       setFriends(data.friends);
       setIsFiltered(true);
@@ -47,8 +50,11 @@ const FriendPage = () => {
 
   const fetchSuperCloseFriends = async () => {
     try {
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const response = await fetch("/superCloseFriendsData.json");
-      console.log("response", response);
+      // console.log("response", response);
       const data = await response.json();
       setFriends(data.friends);
       setIsFiltered(true);
@@ -60,8 +66,11 @@ const FriendPage = () => {
 
   const fetchCloseAndSuperCloseFriends = async () => {
     try {
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const response = await fetch("/closeAndSuperCloseFriendsData.json");
-      console.log("response", response);
+      // console.log("response", response);
       const data = await response.json();
       setFriends(data.friends);
       setIsFiltered(true);
@@ -77,9 +86,10 @@ const FriendPage = () => {
   const fetchFriends = async () => {
     try {
       setLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const response = await fetch("/friendsData.json");
-      console.log("response", response);
+      // console.log("response", response);
       const data = await response.json();
       setFriends(data.friends);
       setIsFiltered(false);
@@ -175,12 +185,11 @@ const FriendPage = () => {
               ))}
             </div>
           ) : (
-            // <div className="friends-list">
-            //   {friends.map((friend) => (
-            //     <FriendTile key={friend.name} friend={friend} />
-            //   ))}
-            // </div>
-            <Loading />
+            <div className="friends-list">
+              {friends.map((friend) => (
+                <FriendTile key={friend.name} friend={friend} />
+              ))}
+            </div>
           )}
         </div>
       </>
