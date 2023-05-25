@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 
-import Header from "@component/components/Header";
-import Sidebar from "@component/components/Sidebar";
 import FilterIcon from "../../assets/filter.png";
 import FilterSelectedIcon from "../../assets/filter-selected.png";
 import FriendTile from "@component/components/Friends/FriendTile";
@@ -129,8 +127,6 @@ const FriendPage = () => {
   if (friends) {
     return (
       <>
-        <Sidebar page="friends" />
-        <Header page="Friends" />
         <div className="friends">
           <div className="filter-rect">
             <button

@@ -1,9 +1,10 @@
 import React from "react";
 import FriendCloseness from "./FriendCloseness";
+import Link from "next/link";
 
 const FriendTile = ({ friend }) => {
   return (
-    <div className="friends-tile">
+    <Link className="friends-tile" href={`friends/${friend.name}`} friendName={friend.name}>
       <div className="friends-title">
         <div className="friends-name">{friend.name}</div>
         <FriendCloseness degree={friend.closeness} />
@@ -14,7 +15,7 @@ const FriendTile = ({ friend }) => {
         <span className="dot">·</span>
         <div>{friend.phone}</div>
       </div>
-    </div>
+    </Link>
   );
 };
 
